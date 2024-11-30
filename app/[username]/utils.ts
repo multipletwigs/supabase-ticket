@@ -30,9 +30,13 @@ export async function checkTicketExists(
 
     const {
       data: { publicUrl },
-    } = supabase.storage.from("ticket-images").getPublicUrl(`${username}.png`);
+    } = supabase.storage.from("ticket-images").getPublicUrl(`${username}.png`, {
+      transform: {
+        quality: 65,
+      },
+    });
 
-    const og_url = `${publicUrl}?v=${files[0].created_at}&quality=65`;
+    const og_url = `${publicUrl}?v=${files[0].created_at}`;
 
     return { exists: true, publicUrl: og_url, created_at: files[0].created_at };
   } catch (error) {
