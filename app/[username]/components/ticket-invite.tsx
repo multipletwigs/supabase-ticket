@@ -39,14 +39,12 @@ function TicketDisplay({
     <div className="relative group">
       <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-500" />
       <div className="relative">
-        <Image
+        <img
           src={publicUrl}
           alt={`${username}'s ticket`}
-          quality={20}
           width={1200}
           height={630}
           className="rounded-lg shadow-lg max-w-full hover:scale-105 transition-transform duration-300"
-          priority
         />
         <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
           <p className="text-white text-base md:text-lg font-medium px-4 text-center">
