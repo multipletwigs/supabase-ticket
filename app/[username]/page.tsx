@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Loader2Icon, Sparkles } from "lucide-react";
 import InviteContent from "./components/ticket-invite";
-import { createClient } from "@/lib/supabase/server";
+import type { Metadata, ResolvingMetadata } from "next";
 import { checkTicketExists } from "./utils";
 
 function ImageLoader() {
@@ -29,12 +29,16 @@ export default async function Page({
   );
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { username: string };
-}) {
-  const ticketCheck = await checkTicketExists(params.username);
+type Props = {
+  params: Promise<{ username: string }>;
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const username = (await params).username;
+  const ticketCheck = await checkTicketExists(username);
 
   const baseMetadata = {
     title: "Join Supabase Malaysia's Community Meetup!",
@@ -56,13 +60,37 @@ export async function generateMetadata({
           },
         ],
       },
+      twitter: {
+        card: "summary_large_image",
+        title: "Join Supabase Malaysia's Community Meetup!",
+        description: "Create your unique ticket and join the community!",
+        images: [
+          {
+            url: "/og-image.png",
+            width: 1200,
+            height: 630,
+          },
+        ],
+      },
     };
   }
 
   return {
     ...baseMetadata,
     openGraph: {
-      title: `Join ${params.username} at Supabase Malaysia's Community Meetup!`,
+      title: `Join ${username} at Supabase Malaysia's Community Meetup!`,
+      description: "Click to claim your unique ticket and join the community!",
+      images: [
+        {
+          url: ticketCheck.publicUrl!,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Join ${username} at Supabase Malaysia's Community Meetup!`,
       description: "Click to claim your unique ticket and join the community!",
       images: [
         {
