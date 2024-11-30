@@ -21,6 +21,9 @@ export const uploadImage = async (dataUrl: string, username: string) => {
         upsert: true,
         contentType: imageBlob.type,
         cacheControl: "86000",
+        metadata: {
+          owner: user.id,
+        },
       });
 
     if (uploadError) throw uploadError;
