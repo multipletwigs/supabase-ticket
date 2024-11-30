@@ -30,7 +30,7 @@ export async function checkTicketExists(
 
     const {
       data: { publicUrl },
-    } = supabase.storage.from("ticket-images").getPublicUrl(`${username}.png`);
+    } = supabase.storage.from("ticket-images").getPublicUrl(`${username}.jpeg`);
 
     const url = new URL(publicUrl);
     url.searchParams.append("v", files[0].created_at);
