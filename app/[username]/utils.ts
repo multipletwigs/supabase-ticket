@@ -17,7 +17,7 @@ export async function checkTicketExists(
       .from("ticket-images")
       .list("", {
         limit: 1,
-        search: `${username}.png`,
+        search: `${username}.jpeg`,
       });
 
     if (listError) {

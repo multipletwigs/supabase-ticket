@@ -36,7 +36,7 @@ export default function NameInput() {
       const downloadUrl = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = downloadUrl;
-      link.download = `social-card-${name || "untitled"}.png`; // Set filename
+      link.download = `social-card-${name || "untitled"}.jpeg`;
 
       document.body.appendChild(link);
       link.click();
