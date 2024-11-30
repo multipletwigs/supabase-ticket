@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useCallback } from "react";
 import { debounce } from "@/lib/utils";
-import { toPng } from "html-to-image";
+import { toJpeg } from "html-to-image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -17,10 +17,10 @@ export default function TicketRenderer() {
     if (templateRef.current) {
       store.setError(false);
       try {
-        const dataUrl = await toPng(templateRef.current, {
+        const dataUrl = await toJpeg(templateRef.current, {
           width: 1200,
           height: 630,
-          quality: 1.0,
+          quality: 0.2,
           pixelRatio: 1,
         });
         store.setImageUrl(dataUrl);
