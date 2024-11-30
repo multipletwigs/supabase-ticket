@@ -36,7 +36,9 @@ export async function checkTicketExists(
       },
     });
 
-    const og_url = `${publicUrl}&v=${files[0].created_at}`;
+    const url = new URL(publicUrl);
+    url.searchParams.append("v", files[0].created_at);
+    const og_url = url.toString();
 
     return { exists: true, publicUrl: og_url, created_at: files[0].created_at };
   } catch (error) {
