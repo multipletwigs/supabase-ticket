@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { Loader2Icon, Sparkles } from "lucide-react";
 import InviteContent from "./components/ticket-invite";
 import type { Metadata, ResolvingMetadata } from "next";
-import { checkTicketExists } from "./utils";
 
 function ImageLoader() {
   return (
@@ -38,7 +37,19 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const username = (await params).username;
-  const ticketCheck = await checkTicketExists(username);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_APP_URL!}/api/tickets/check`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username }),
+      cache: "no-store",
+    },
+  );
+
+  const ticketCheck = await response.json();
 
   const baseMetadata = {
     title: "Join Supabase Malaysia's Community Meetup!",

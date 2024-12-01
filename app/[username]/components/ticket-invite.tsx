@@ -59,7 +59,19 @@ function TicketDisplay({
 async function InviteContent({
   username,
 }: InviteContentProps): Promise<React.JSX.Element> {
-  const ticketCheck = await checkTicketExists(username);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_APP_URL!}/api/tickets/check`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username }),
+      cache: "no-store",
+    },
+  );
+
+  const ticketCheck = await response.json();
 
   if (!ticketCheck.exists) {
     return <TicketNotFound />;
