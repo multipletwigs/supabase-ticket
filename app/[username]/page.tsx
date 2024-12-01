@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Loader2Icon, Sparkles } from "lucide-react";
+import { Loader2Icon } from "lucide-react";
 import InviteContent from "./components/ticket-invite";
 import type { Metadata, ResolvingMetadata } from "next";
 

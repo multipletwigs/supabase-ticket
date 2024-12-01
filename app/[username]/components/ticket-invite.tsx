@@ -1,5 +1,3 @@
-import { createClient } from "@/lib/supabase/server";
-import Image from "next/image";
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
 import {
@@ -10,7 +8,6 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import TicketNotFound from "./ticket-not-found";
-import { checkTicketExists } from "../utils";
 
 interface InviteContentProps {
   username: string;
