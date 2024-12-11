@@ -17,7 +17,3 @@ on storage.objects for select
 to anon
 using (bucket_id = 'ticket-images');
 
-create policy "Users can insert their own ticket"
-on tickets_demo for insert
-to authenticated
-with check (auth.uid() = user_id);

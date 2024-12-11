@@ -15,9 +15,6 @@ on tickets_demo for insert
 to authenticated
 with check ((( SELECT auth.uid() AS uid) = id));
 
-create policy "Users can update tickets_demo"
-on tickets_demo for update
-to authenticated
-with check ((( SELECT auth.uid() AS uid) = id));
+!--  TODO:  Add RLS for update 
 
-create index tickets_demo_created_at_idx on tickets(created_at);
+
