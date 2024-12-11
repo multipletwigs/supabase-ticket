@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
 import { Check, Copy, Loader2Icon, TicketIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -29,6 +30,10 @@ const ClaimButton = ({
     setTimeout(() => setCopied(false), 2000);
   };
 
+  useEffect(() => {
+    console.log(hasTicket, username, host);
+  }, []);
+
   return (
     <div className="flex flex-col sm:flex-row gap-2 items-center">
       <Button
@@ -44,7 +49,6 @@ const ClaimButton = ({
         )}
         {hasTicket ? "Update Ticket" : "Claim Ticket"}
       </Button>
-      {console.log(hasTicket, username, host)}
       {hasTicket && username && host && (
         <Button
           variant="outline"
