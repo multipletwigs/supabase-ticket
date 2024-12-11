@@ -28,6 +28,5 @@ export function createClient() {
   );
 }
 
-export function createServiceRoleClient() {
-  // TODO: Implement a client that uses the service key
-}
+// TODO: Implement a server client that uses the service key
+export function createServiceRoleClient() {}

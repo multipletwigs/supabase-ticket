@@ -17,4 +17,4 @@ on storage.objects for select
 to anon
 using (bucket_id = 'ticket-images');
 
-!-- FIX: THIS STUFF WRONG! NO TIME? JUST USE A SERVICE KEY
+!-- FIX: THIS STUFF WRONG! OH NO! OUT OF TIME? JUST USE A SERVICE KEY
