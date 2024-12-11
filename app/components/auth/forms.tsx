@@ -61,7 +61,11 @@ export const LoginButtons = () => {
               loading={isUploading}
               hasTicket={hasTicket}
               username={username}
-              host={typeof window !== "undefined" ? window.location.origin : ""}
+              host={
+                typeof window !== "undefined"
+                  ? window.location.origin
+                  : process.env.NEXT_PUBLIC_APP_URL
+              }
             />
             {uploadError && (
               <p className="text-red-500 text-sm">{uploadError}</p>
