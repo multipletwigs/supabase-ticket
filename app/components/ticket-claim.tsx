@@ -44,7 +44,7 @@ const ClaimButton = ({
         )}
         {hasTicket ? "Update Ticket" : "Claim Ticket"}
       </Button>
-
+      {console.log(hasTicket, username, host)}
       {hasTicket && username && host && (
         <Button
           variant="outline"
