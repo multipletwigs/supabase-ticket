@@ -15,6 +15,6 @@ on tickets_demo for insert
 to authenticated
 with check ((( SELECT auth.uid() AS uid) = id));
 
-!--  TODO:  Add RLS for update 
+!--  TODO:  Add RLS for UPDATE 
 
 
