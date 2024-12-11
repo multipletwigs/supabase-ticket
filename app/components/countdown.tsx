@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const targetDate = new Date("2024-12-11T18:00:00").getTime();
+const targetDate = new Date("2024-12-12T18:00:00").getTime();
 
 const calculateTimeLeft = () => {
   const difference = targetDate - new Date().getTime();
